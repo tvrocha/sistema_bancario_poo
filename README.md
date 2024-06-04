@@ -26,7 +26,7 @@ Este é um sistema bancário desenvolvido em Python utilizando o paradigma de Pr
 1. Certifique-se de ter o Python 3 instalado em seu sistema.
 2. Clone o repositório:
    ```sh
-   git clone https://github.com/USERNAME/sistema_bancario_poo.git
+   git clone https://github.com/tvrocha/sistema_bancario_poo.git
    ```
 3. Navegue até o diretório do projeto:
     ```sh
