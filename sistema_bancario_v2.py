@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod, abstractproperty
 from datetime import datetime
 
-class ContaIterador: # Implementar listar contas
+class ContaIterador: 
     def __init__(self, contas) -> None:
         self.contas = contas
         self._index = 0
@@ -134,7 +134,7 @@ class ContaCorrente(Conta):
             return super().sacar(valor)
     
     def __str__(self):
-        return f'Agência: {self.agencia} | C/C: {self.numero}\nTitular: {self.cliente.nome} | Saldo: R${self.saldo}'
+        return f'\nAgência: {self.agencia} | C/C: {self.numero}\nTitular: {self.cliente.nome} | Saldo: R${self.saldo}\n'
 
 class Historico:
     def __init__(self, transacoes=None) -> None:
@@ -221,6 +221,7 @@ def menu_cadastro():
     return input('Entre com a opção: ')
 
 def menu_opcoes(cpf_login, lista_clientes):
+    global aux_conta_logada
     cliente = [cliente for cliente in lista_clientes if cliente.cpf == cpf_login][0]
     contas = cliente.contas
     if len(contas) == 1:
@@ -236,7 +237,7 @@ def menu_opcoes(cpf_login, lista_clientes):
         if opcao == 0:
             return '0', None
         conta = contas[opcao - 1]
-    organizar_menu('Menu - Sistema Bancário', ['Deposito', 'Saque', 'Extrato', 'Cadastrar nova conta','Listar contas', 'Sair'])
+    organizar_menu('Menu - Sistema Bancário', ['Deposito', 'Saque', 'Extrato', 'Cadastrar nova conta', 'Listar contas', 'Sair'])
     print(f'Titular: {cliente.nome}')
     print(f'Conta: {conta.numero}')
     return input('Entre com a opção: '), conta
@@ -325,6 +326,8 @@ def exibir_contas(cliente):
     for conta in ContaIterador(cliente.cliente.contas):
         print(conta)
 
+aux_conta_logada = 0
+
 clientes = []
 
 while True:
@@ -363,6 +366,7 @@ while True:
 
         if opcao_menu == '0':
             organizar_menu('Sair da Conta')
+            aux_conta_logada = 0
             break
         
         elif opcao_menu == '1':
