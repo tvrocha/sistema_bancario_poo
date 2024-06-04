@@ -221,7 +221,6 @@ def menu_cadastro():
     return input('Entre com a opção: ')
 
 def menu_opcoes(cpf_login, lista_clientes):
-    global aux_conta_logada
     cliente = [cliente for cliente in lista_clientes if cliente.cpf == cpf_login][0]
     contas = cliente.contas
     if len(contas) == 1:
@@ -325,8 +324,6 @@ def exibir_clientes(clientes):
 def exibir_contas(cliente):
     for conta in ContaIterador(cliente.cliente.contas):
         print(conta)
-
-aux_conta_logada = 0
 
 clientes = []
 
