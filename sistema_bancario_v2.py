@@ -1,6 +1,22 @@
 from abc import ABC, abstractmethod, abstractproperty
 from datetime import datetime
 
+class ContaIterador: # Implementar listar contas
+    def __init__(self, contas) -> None:
+        self.contas = contas
+        self._index = 0
+
+    def __iter__(self):
+        return self
+
+    def __next__(self): 
+        try:
+            conta = self.contas[self._index]
+        except IndexError:
+            raise StopIteration
+        self._index += 1
+        return conta
+
 class Cliente:
     def __init__(self, endereco) -> None:
         self._contas = [] 
@@ -16,7 +32,6 @@ class Cliente:
     def contas(self):
         return self._contas
     
-
 class PessoaFisica(Cliente):
     def __init__(self, cpf, nome, data_nascimento, endereco) -> None:
         super().__init__(endereco)
@@ -95,7 +110,6 @@ class Conta:
     def adicionar_transacao(self, transacao):
         transacao.executar(self)
     
-
 class ContaCorrente(Conta):
     def __init__(self, numero, cliente, limite_saques=3, limite_valor_saque=500) -> None:
         super().__init__(numero, cliente)
@@ -120,11 +134,7 @@ class ContaCorrente(Conta):
             return super().sacar(valor)
     
     def __str__(self):
-        return f"""\
-            Agência:\t{self.agencia}
-            C/C:\t\t{self.numero}
-            Titular:\t{self.cliente.nome}
-        """
+        return f'Agência: {self.agencia} | C/C: {self.numero}\nTitular: {self.cliente.nome} | Saldo: R${self.saldo}'
 
 class Historico:
     def __init__(self, transacoes=None) -> None:
@@ -141,12 +151,12 @@ class Historico:
             }
         )
     
-    def exibir_extrato(self, conta): ## Alterar a forma de mostrar o extrato
+    def exibir_extrato(self, conta): ## Alterar a forma de mostrar o extrato e usar um gerador
         if not self._transacoes:
             print('\nNenhuma transação realizada!\n')
         else:
             for transacao in self._transacoes:
-                print(f'Tipo: {transacao["Tipo"]} | Valor: R${transacao["Valor"]:.2f} | Horário: {transacao["Data"]}')
+                yield f'Tipo: {transacao["Tipo"]} | Valor: R${transacao["Valor"]:.2f} | Horário: {transacao["Data"]}'
             print()
             print(f'Saldo: R${conta.saldo:.2f}')
     
@@ -190,6 +200,11 @@ class Deposito(Transacao):
     def valor(self):
         return self._valor
 
+def log_transacao(func):
+    def envelope(*args, **kwargs):        
+        func(*args, **kwargs)
+        print(f'{func.__name__.upper()} : {datetime.now().strftime(r"%d-%m-%Y %H:%M:%S")}')
+    return envelope
 
 def organizar_menu(titulo, opcoes=[]):
     print()
@@ -201,11 +216,9 @@ def organizar_menu(titulo, opcoes=[]):
         print(f'[{i + 1 if opcao != "Sair" else "0"}] - {opcao.title()}')
     print()
 
-
 def menu_cadastro():
-    organizar_menu('Sistema Bancário - Cadastro', ['Cadastrar', 'Já tenho cadastro', 'Sair'])
+    organizar_menu('Sistema Bancário - Cadastro', ['Cadastrar', 'Já tenho cadastro', 'Clientes cadastrados', 'Sair'])
     return input('Entre com a opção: ')
-
 
 def menu_opcoes(cpf_login, lista_clientes):
     cliente = [cliente for cliente in lista_clientes if cliente.cpf == cpf_login][0]
@@ -223,12 +236,12 @@ def menu_opcoes(cpf_login, lista_clientes):
         if opcao == 0:
             return '0', None
         conta = contas[opcao - 1]
-    organizar_menu('Menu - Sistema Bancário', ['Deposito', 'Saque', 'Extrato', 'Cadastrar nova conta' , 'Sair'])
+    organizar_menu('Menu - Sistema Bancário', ['Deposito', 'Saque', 'Extrato', 'Cadastrar nova conta','Listar contas', 'Sair'])
     print(f'Titular: {cliente.nome}')
     print(f'Conta: {conta.numero}')
     return input('Entre com a opção: '), conta
 
-
+@log_transacao
 def cadastrar_clientes(clientes):
     organizar_menu('Cadastrar Cliente')
     while True:
@@ -255,6 +268,7 @@ def cadastrar_clientes(clientes):
     criar_nova_conta(novo_cliente, clientes)    
     print(f'\nCliente [{nome}] cadastrado com sucesso!\n')
 
+@log_transacao
 def criar_nova_conta(novo_cliente, clientes):
     max_num_conta = 0
     for cliente in clientes:
@@ -263,7 +277,7 @@ def criar_nova_conta(novo_cliente, clientes):
     num_conta = max_num_conta + 1
     nova_conta = ContaCorrente.nova_conta(cliente=novo_cliente, numero=num_conta)
     novo_cliente.adicionar_conta(nova_conta)
-    print(f'\nConta{num_conta} criado com sucesso.\n')
+    print(f'\nConta {num_conta} criado com sucesso.\n')
 
 def filtrar_cpf(cpf, clientes):
     filtro_cliente = [cliente for cliente in clientes if cliente.cpf == cpf ]
@@ -280,21 +294,36 @@ def login(clientes):
         print('\nCPF não cadastrado!\n')
     return None
 
+@log_transacao
 def realizar_deposito(conta):
     organizar_menu('Depósito')
     valor = float(input('Informe o valor do depósito: R$'))
     transacao = Deposito(valor)
     conta.adicionar_transacao(transacao)
 
+@log_transacao
 def realizar_saque(conta):
     organizar_menu('Saque')
     valor = float(input('Informe o valor do saque: R$'))
     transacao = Saque(valor)
     conta.adicionar_transacao(transacao)
 
-def exibir_extrato(conta):
+@log_transacao
+def exibir_extrato(contas): 
     organizar_menu('Extrato')
-    conta.historico.exibir_extrato(conta)
+    for conta in contas.historico.exibir_extrato(contas): 
+        print(conta)
+
+def exibir_clientes(clientes):
+    if not clientes:
+        print('\nNenhum cliente encontrado.')
+    else:
+        for cliente in clientes:
+            print(f'Cliente: {cliente.nome} | CPF: {cliente.cpf} | Nascimento: {cliente.data_nascimento}')
+
+def exibir_contas(cliente):
+    for conta in ContaIterador(cliente.cliente.contas):
+        print(conta)
 
 clientes = []
 
@@ -313,6 +342,10 @@ while True:
         elif opcao_cadastro == '2':
             login_realizado = login(clientes)
         
+        elif opcao_cadastro == '3':
+            exibir_clientes(clientes)
+            break
+        
         elif opcao_cadastro == '0':
             organizar_menu('Fim do Programa')
             sair = True
@@ -326,7 +359,7 @@ while True:
 
     while login_realizado:
 
-        opcao_menu, conta = menu_opcoes(login_realizado, clientes) # 'Deposito', 'Saque', 'Extrato', 'Cadastrar nova conta' , 'Sair'
+        opcao_menu, conta = menu_opcoes(login_realizado, clientes) 
 
         if opcao_menu == '0':
             organizar_menu('Sair da Conta')
@@ -343,6 +376,9 @@ while True:
         
         elif opcao_menu == '4':
             criar_nova_conta(filtrar_cpf(login_realizado, clientes), clientes)
+        
+        elif opcao_menu == '5':
+            exibir_contas(conta)
         
         else:
             organizar_menu('Opção Inválida')
