@@ -1,4 +1,4 @@
-from abc import ABC, abstractmethod, abstractproperty
+from abc import ABC, abstractproperty, abstractclassmethod
 from datetime import datetime
 
 class ContaIterador: 
@@ -21,9 +21,6 @@ class Cliente:
     def __init__(self, endereco) -> None:
         self._contas = [] 
         self.endereco = endereco     
-    
-    def realizar_transacao(self, conta, transacao):
-        pass
 
     def adicionar_conta(self, conta):
         self._contas.append(conta)
@@ -88,7 +85,7 @@ class Conta:
         excedeu_saldo = valor > saldo
 
         if excedeu_saldo:
-            print('\Saldo insuficiente!\n')
+            print('\nSaldo insuficiente!')
             return False
         elif valor > 0:
             self._saldo -= valor
@@ -108,6 +105,9 @@ class Conta:
             return False
     
     def adicionar_transacao(self, transacao):
+        if conta.historico.transacoes_do_dia() >= 2:
+            print('\nVocê excedeu o número de transações permitidas para hoje!')
+            return
         transacao.executar(self)
     
 class ContaCorrente(Conta):
@@ -117,7 +117,8 @@ class ContaCorrente(Conta):
         self._LIMITE_VALOR_SAQUES = limite_valor_saque
     
     def sacar(self, valor):
-        numero_saques = len([transacao for transacao in self.historico.transacoes if transacao['Tipo'] == Saque.__name__])
+        numero_saques = len([transacao for transacao in self.historico.transacoes 
+                             if transacao['Tipo'] == Saque.__name__])
 
         excedeu_limite = valor > self._LIMITE_VALOR_SAQUES
         excedeu_saques = numero_saques >= self._LIMITE_SAQUES
@@ -163,9 +164,15 @@ class Historico:
     @property
     def transacoes(self):
         return self._transacoes
+    
+    def transacoes_do_dia(self):
+        transacoes_hoje = len([transacao for transacao in self._transacoes if 
+                           datetime.strptime(transacao['Data'], r"%d-%m-%Y %H:%M:%S").strftime(r'%d-%m-%Y') == datetime.today().strftime(r'%d-%m-%Y')])
+        return transacoes_hoje
+        
 
 class Transacao(ABC): 
-    @abstractmethod
+    @abstractclassmethod
     def executar(self, conta):
         pass
 
@@ -247,12 +254,12 @@ def cadastrar_clientes(clientes):
     while True:
         cpf = input('Informe o CPF [apenas números]: ')
         if not cpf.isdigit() or len(cpf) != 11:
-            print('\nCPF inválido. Tente novamente.\n')
+            print('\nCPF inválido. Tente novamente.')
         else:
             break
     novo_cliente = filtrar_cpf(cpf, clientes)
     if novo_cliente:
-        print('\nJá existe conta com este CPF.\n')
+        print('\nJá existe conta com este CPF.')
         return
     nome = input('Informe o nome completo: ')
     while True:
@@ -261,12 +268,12 @@ def cadastrar_clientes(clientes):
             datetime.strptime(data_nascimento, r'%d-%m-%Y')
             break
         except ValueError:
-            print('\nData de nascimento inválida. Tente novamente.\n')
+            print('\nData de nascimento inválida. Tente novamente.')
     endereco = input('Informe endereco [Rua, Numero - Bairro - Cidade/MG]: ')
     novo_cliente = PessoaFisica(cpf=cpf, nome=nome, data_nascimento=data_nascimento, endereco=endereco)
     clientes.append(novo_cliente)
     criar_nova_conta(novo_cliente, clientes)    
-    print(f'\nCliente [{nome}] cadastrado com sucesso!\n')
+    print(f'\nCliente [{nome}] cadastrado com sucesso!')
 
 @log_transacao
 def criar_nova_conta(novo_cliente, clientes):
@@ -277,7 +284,7 @@ def criar_nova_conta(novo_cliente, clientes):
     num_conta = max_num_conta + 1
     nova_conta = ContaCorrente.nova_conta(cliente=novo_cliente, numero=num_conta)
     novo_cliente.adicionar_conta(nova_conta)
-    print(f'\nConta {num_conta} criado com sucesso.\n')
+    print(f'\nConta {num_conta} criado com sucesso.')
 
 def filtrar_cpf(cpf, clientes):
     filtro_cliente = [cliente for cliente in clientes if cliente.cpf == cpf ]
@@ -288,10 +295,10 @@ def login(clientes):
     cpf_login = input('Entre com o CPF [apenas números]: ')
     se_cadastrado = filtrar_cpf(cpf_login, clientes)
     if se_cadastrado:
-        print('\nLogin realizado!\n')
+        print('\nLogin realizado!')
         return cpf_login
     else:
-        print('\nCPF não cadastrado!\n')
+        print('\nCPF não cadastrado!')
     return None
 
 @log_transacao
