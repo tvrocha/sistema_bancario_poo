@@ -1,5 +1,6 @@
 from abc import ABC, abstractproperty, abstractclassmethod
 from datetime import datetime
+from pathlib import Path
 
 class ContaIterador: 
     def __init__(self, contas) -> None:
@@ -47,6 +48,9 @@ class PessoaFisica(Cliente):
     @property
     def data_nascimento(self):
         return self._data_nascimento
+    
+    def __repr__(self) -> str: # representação (parecido com str)
+        return f'[{self.__class__.__name__}]: [CPF: {self.cpf}]'
     
 class Conta:
     def __init__(self, numero, cliente) -> None:
@@ -105,7 +109,7 @@ class Conta:
             return False
     
     def adicionar_transacao(self, transacao):
-        if conta.historico.transacoes_do_dia() >= 2:
+        if conta.historico.transacoes_do_dia() > 10:
             print('\nVocê excedeu o número de transações permitidas para hoje!')
             return
         transacao.executar(self)
@@ -137,6 +141,9 @@ class ContaCorrente(Conta):
     def __str__(self):
         return f'\nAgência: {self.agencia} | C/C: {self.numero}\nTitular: {self.cliente.nome} | Saldo: R${self.saldo}\n'
 
+    def __repr__(self) -> str:
+        return f'[{self.__class__.__name__}]: [Ag: {self.agencia}, Conta: {self.numero}, Cliente: {self.cliente.nome}]'
+
 class Historico:
     def __init__(self, transacoes=None) -> None:
         if transacoes is None:
@@ -152,12 +159,13 @@ class Historico:
             }
         )
     
-    def exibir_extrato(self, conta): ## Alterar a forma de mostrar o extrato e usar um gerador
+    def exibir_extrato(self, conta, tipo_transacao=None): ## Alterar a forma de mostrar o extrato e usar um gerador
         if not self._transacoes:
             print('\nNenhuma transação realizada!\n')
         else:
             for transacao in self._transacoes:
-                yield f'Tipo: {transacao["Tipo"]} | Valor: R${transacao["Valor"]:.2f} | Horário: {transacao["Data"]}'
+                if tipo_transacao is None or transacao['Tipo'].lower() == tipo_transacao.lower():
+                    yield f'Tipo: {transacao["Tipo"]} | Valor: R${transacao["Valor"]:.2f} | Horário: {transacao["Data"]}'
             print()
             print(f'Saldo: R${conta.saldo:.2f}')
     
@@ -169,7 +177,6 @@ class Historico:
         transacoes_hoje = len([transacao for transacao in self._transacoes if 
                            datetime.strptime(transacao['Data'], r"%d-%m-%Y %H:%M:%S").strftime(r'%d-%m-%Y') == datetime.today().strftime(r'%d-%m-%Y')])
         return transacoes_hoje
-        
 
 class Transacao(ABC): 
     @abstractclassmethod
@@ -208,9 +215,14 @@ class Deposito(Transacao):
         return self._valor
 
 def log_transacao(func):
-    def envelope(*args, **kwargs):        
-        func(*args, **kwargs)
-        print(f'{func.__name__.upper()} : {datetime.now().strftime(r"%d-%m-%Y %H:%M:%S")}')
+    def envelope(*args, **kwargs):
+        resultado = func(*args, **kwargs) 
+        if func.__name__.lower() == 'cadastrar_clientes' or func.__name__.lower() == 'criar_nova_conta':
+            with open(PASTA_RAIZ / 'cadastra_clientes_log.txt', 'a', encoding='utf-8', newline='') as arquivo_cadastros:
+                arquivo_cadastros.write(f'[{datetime.now().strftime(r"%d-%m-%Y %H:%M:%S")}] | Função: {func.__name__.upper()} | Args: [{args}] & [{kwargs}] | Retorno: {resultado}\n')
+        else:
+            with open(PASTA_RAIZ / 'log.txt', 'a', encoding='utf-8', newline='') as arquivo_log:              
+                arquivo_log.write(f'[{datetime.now().strftime(r"%d-%m-%Y %H:%M:%S")}] | Função: {func.__name__.upper()} | Args: [{args}] & [{kwargs}] | Retorno: {resultado}\n')
     return envelope
 
 def organizar_menu(titulo, opcoes=[]):
@@ -318,7 +330,7 @@ def realizar_saque(conta):
 @log_transacao
 def exibir_extrato(contas): 
     organizar_menu('Extrato')
-    for conta in contas.historico.exibir_extrato(contas): 
+    for conta in contas.historico.exibir_extrato(contas): #tipo_transacao='Saque' caso queira filtrar 
         print(conta)
 
 def exibir_clientes(clientes):
@@ -326,13 +338,16 @@ def exibir_clientes(clientes):
         print('\nNenhum cliente encontrado.')
     else:
         for cliente in clientes:
-            print(f'Cliente: {cliente.nome} | CPF: {cliente.cpf} | Nascimento: {cliente.data_nascimento}')
+            print()
+            print(f'Cliente: {cliente.nome} | CPF: {cliente.cpf}\nNascimento: {cliente.data_nascimento} | Contas: {[conta.numero for conta in cliente.contas]}')
 
 def exibir_contas(cliente):
     for conta in ContaIterador(cliente.cliente.contas):
         print(conta)
 
 clientes = []
+
+PASTA_RAIZ = Path(__file__).parent
 
 while True:
 
