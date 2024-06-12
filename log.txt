@@ -1,0 +1,8 @@
+[10-06-2024 18:24:01] | Função: REALIZAR_DEPOSITO | Args: [(<__main__.ContaCorrente object at 0x000002084CA99BE0>,)] & [{}] | Retorno: None
+[10-06-2024 18:24:04] | Função: REALIZAR_SAQUE | Args: [(<__main__.ContaCorrente object at 0x000002084CA99BE0>,)] & [{}] | Retorno: None
+[10-06-2024 18:24:15] | Função: REALIZAR_DEPOSITO | Args: [(<__main__.ContaCorrente object at 0x000002084CD41490>,)] & [{}] | Retorno: None
+[10-06-2024 18:24:20] | Função: REALIZAR_SAQUE | Args: [(<__main__.ContaCorrente object at 0x000002084CD41490>,)] & [{}] | Retorno: None
+[10-06-2024 18:33:17] | Função: REALIZAR_DEPOSITO | Args: [([ContaCorrente]: [Ag: 0001, Conta: 1, Cliente: Túlio],)] & [{}] | Retorno: None
+[10-06-2024 18:33:22] | Função: EXIBIR_EXTRATO | Args: [([ContaCorrente]: [Ag: 0001, Conta: 1, Cliente: Túlio],)] & [{}] | Retorno: None
+[10-06-2024 18:33:31] | Função: REALIZAR_SAQUE | Args: [([ContaCorrente]: [Ag: 0001, Conta: 1, Cliente: Túlio],)] & [{}] | Retorno: None
+[10-06-2024 18:33:41] | Função: REALIZAR_DEPOSITO | Args: [([ContaCorrente]: [Ag: 0001, Conta: 2, Cliente: Túlio],)] & [{}] | Retorno: None

@@ -1,0 +1,8 @@
+[10-06-2024 18:36:00] | Função: CRIAR_NOVA_CONTA | Args: [([PessoaFisica]: [CPF: 13634944650], [[PessoaFisica]: [CPF: 13634944650]])] & [{}] | Retorno: None
+[10-06-2024 18:36:00] | Função: CADASTRAR_CLIENTES | Args: [([[PessoaFisica]: [CPF: 13634944650]],)] & [{}] | Retorno: None
+[10-06-2024 18:36:23] | Função: CRIAR_NOVA_CONTA | Args: [([PessoaFisica]: [CPF: 12345678911], [[PessoaFisica]: [CPF: 13634944650], [PessoaFisica]: [CPF: 12345678911]])] & [{}] | Retorno: None
+[10-06-2024 18:36:23] | Função: CADASTRAR_CLIENTES | Args: [([[PessoaFisica]: [CPF: 13634944650], [PessoaFisica]: [CPF: 12345678911]],)] & [{}] | Retorno: None
+[12-06-2024 11:46:07] | Função: CRIAR_NOVA_CONTA | Args: [([PessoaFisica]: [CPF: 13634944650], [[PessoaFisica]: [CPF: 13634944650]])] & [{}] | Retorno: None
+[12-06-2024 11:46:07] | Função: CADASTRAR_CLIENTES | Args: [([[PessoaFisica]: [CPF: 13634944650]],)] & [{}] | Retorno: None
+[12-06-2024 11:46:19] | Função: CRIAR_NOVA_CONTA | Args: [([PessoaFisica]: [CPF: 12345678911], [[PessoaFisica]: [CPF: 13634944650], [PessoaFisica]: [CPF: 12345678911]])] & [{}] | Retorno: None
+[12-06-2024 11:46:19] | Função: CADASTRAR_CLIENTES | Args: [([[PessoaFisica]: [CPF: 13634944650], [PessoaFisica]: [CPF: 12345678911]],)] & [{}] | Retorno: None
