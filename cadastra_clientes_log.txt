@@ -6,3 +6,39 @@
 [12-06-2024 11:46:07] | Função: CADASTRAR_CLIENTES | Args: [([[PessoaFisica]: [CPF: 13634944650]],)] & [{}] | Retorno: None
 [12-06-2024 11:46:19] | Função: CRIAR_NOVA_CONTA | Args: [([PessoaFisica]: [CPF: 12345678911], [[PessoaFisica]: [CPF: 13634944650], [PessoaFisica]: [CPF: 12345678911]])] & [{}] | Retorno: None
 [12-06-2024 11:46:19] | Função: CADASTRAR_CLIENTES | Args: [([[PessoaFisica]: [CPF: 13634944650], [PessoaFisica]: [CPF: 12345678911]],)] & [{}] | Retorno: None
+[20-06-2024 11:53:48] | Função: CRIAR_NOVA_CONTA | Args: [([PessoaFisica]: [CPF: 13634944650], [[PessoaFisica]: [CPF: 13634944650]])] & [{}] | Retorno: None
+[20-06-2024 11:53:48] | Função: CADASTRAR_CLIENTES | Args: [([[PessoaFisica]: [CPF: 13634944650]],)] & [{}] | Retorno: None
+[20-06-2024 11:58:32] | Função: CRIAR_NOVA_CONTA | Args: [([PessoaFisica]: [CPF: 13634944650], [[PessoaFisica]: [CPF: 13634944650]])] & [{}] | Retorno: None
+[20-06-2024 11:58:32] | Função: CADASTRAR_CLIENTES | Args: [([[PessoaFisica]: [CPF: 13634944650]],)] & [{}] | Retorno: None
+[20-06-2024 12:02:45] | Função: CRIAR_NOVA_CONTA | Args: [([PessoaFisica]: [CPF: 13634944650], [[PessoaFisica]: [CPF: 13634944650]])] & [{}] | Retorno: None
+[20-06-2024 12:02:45] | Função: CADASTRAR_CLIENTES | Args: [([[PessoaFisica]: [CPF: 13634944650]],)] & [{}] | Retorno: None
+[20-06-2024 12:04:16] | Função: CRIAR_NOVA_CONTA | Args: [([PessoaFisica]: [CPF: 13634944650], [[PessoaFisica]: [CPF: 13634944650]])] & [{}] | Retorno: None
+[20-06-2024 12:15:28] | Função: CRIAR_NOVA_CONTA | Args: [([PessoaFisica]: [CPF: 13634944650], [[PessoaFisica]: [CPF: 13634944650]])] & [{}] | Retorno: None
+[20-06-2024 12:15:28] | Função: CADASTRAR_CLIENTES | Args: [([[PessoaFisica]: [CPF: 13634944650]],)] & [{}] | Retorno: None
+[20-06-2024 12:16:32] | Função: CRIAR_NOVA_CONTA | Args: [([PessoaFisica]: [CPF: 13634944650], [[PessoaFisica]: [CPF: 13634944650]])] & [{}] | Retorno: None
+[20-06-2024 12:16:32] | Função: CADASTRAR_CLIENTES | Args: [([[PessoaFisica]: [CPF: 13634944650]],)] & [{}] | Retorno: None
+[20-06-2024 12:16:41] | Função: CRIAR_NOVA_CONTA | Args: [([PessoaFisica]: [CPF: 13634944650], [[PessoaFisica]: [CPF: 13634944650]])] & [{}] | Retorno: None
+[20-06-2024 12:19:59] | Função: CRIAR_NOVA_CONTA | Args: [([PessoaFisica]: [CPF: 13634944650], [[PessoaFisica]: [CPF: 13634944650]])] & [{}] | Retorno: None
+[20-06-2024 12:19:59] | Função: CADASTRAR_CLIENTES | Args: [([[PessoaFisica]: [CPF: 13634944650]],)] & [{}] | Retorno: None
+[20-06-2024 12:20:08] | Função: CRIAR_NOVA_CONTA | Args: [([PessoaFisica]: [CPF: 13634944650], [[PessoaFisica]: [CPF: 13634944650]])] & [{}] | Retorno: None
+[20-06-2024 12:21:38] | Função: CRIAR_NOVA_CONTA | Args: [([PessoaFisica]: [CPF: 13634944650], [[PessoaFisica]: [CPF: 13634944650]])] & [{}] | Retorno: None
+[20-06-2024 12:21:38] | Função: CADASTRAR_CLIENTES | Args: [([[PessoaFisica]: [CPF: 13634944650]],)] & [{}] | Retorno: None
+[20-06-2024 12:23:08] | Função: CRIAR_NOVA_CONTA | Args: [([PessoaFisica]: [CPF: 13634944650], [[PessoaFisica]: [CPF: 13634944650]])] & [{}] | Retorno: None
+[20-06-2024 12:23:08] | Função: CADASTRAR_CLIENTES | Args: [([[PessoaFisica]: [CPF: 13634944650]],)] & [{}] | Retorno: None
+[20-06-2024 12:24:13] | Função: CRIAR_NOVA_CONTA | Args: [([PessoaFisica]: [CPF: 13634944650], [[PessoaFisica]: [CPF: 13634944650]])] & [{}] | Retorno: None
+[20-06-2024 12:31:00] | Função: CRIAR_NOVA_CONTA | Args: [([PessoaFisica]: [CPF: 13634944650], [[PessoaFisica]: [CPF: 13634944650]])] & [{}] | Retorno: None
+[20-06-2024 12:31:00] | Função: CADASTRAR_CLIENTES | Args: [([[PessoaFisica]: [CPF: 13634944650]],)] & [{}] | Retorno: None
+[20-06-2024 12:31:25] | Função: CRIAR_NOVA_CONTA | Args: [([PessoaFisica]: [CPF: 13634944650], [[PessoaFisica]: [CPF: 13634944650]])] & [{}] | Retorno: None
+[20-06-2024 12:34:56] | Função: CRIAR_NOVA_CONTA | Args: [([PessoaFisica]: [CPF: 13634944650], [[PessoaFisica]: [CPF: 13634944650]])] & [{}] | Retorno: None
+[20-06-2024 12:34:56] | Função: CADASTRAR_CLIENTES | Args: [([[PessoaFisica]: [CPF: 13634944650]],)] & [{}] | Retorno: None
+[20-06-2024 12:35:05] | Função: CRIAR_NOVA_CONTA | Args: [([PessoaFisica]: [CPF: 13634944650], [[PessoaFisica]: [CPF: 13634944650]])] & [{}] | Retorno: None
+[20-06-2024 12:48:43] | Função: CRIAR_NOVA_CONTA | Args: [([PessoaFisica]: [CPF: 13634944650], [[PessoaFisica]: [CPF: 13634944650]])] & [{}] | Retorno: None
+[20-06-2024 12:48:43] | Função: CADASTRAR_CLIENTES | Args: [([[PessoaFisica]: [CPF: 13634944650]],)] & [{}] | Retorno: None
+[20-06-2024 12:50:26] | Função: CRIAR_NOVA_CONTA | Args: [([PessoaFisica]: [CPF: 13634944650], [[PessoaFisica]: [CPF: 13634944650]])] & [{}] | Retorno: None
+[20-06-2024 12:50:26] | Função: CADASTRAR_CLIENTES | Args: [([[PessoaFisica]: [CPF: 13634944650]],)] & [{}] | Retorno: None
+[20-06-2024 12:51:16] | Função: CRIAR_NOVA_CONTA | Args: [([PessoaFisica]: [CPF: 13634944650], [[PessoaFisica]: [CPF: 13634944650]])] & [{}] | Retorno: None
+[20-06-2024 12:51:16] | Função: CADASTRAR_CLIENTES | Args: [([[PessoaFisica]: [CPF: 13634944650]],)] & [{}] | Retorno: None
+[20-06-2024 12:51:22] | Função: CRIAR_NOVA_CONTA | Args: [([PessoaFisica]: [CPF: 13634944650], [[PessoaFisica]: [CPF: 13634944650]])] & [{}] | Retorno: None
+[20-06-2024 12:52:05] | Função: CRIAR_NOVA_CONTA | Args: [([PessoaFisica]: [CPF: 13634944650], [[PessoaFisica]: [CPF: 13634944650]])] & [{}] | Retorno: None
+[20-06-2024 12:52:05] | Função: CADASTRAR_CLIENTES | Args: [([[PessoaFisica]: [CPF: 13634944650]],)] & [{}] | Retorno: None
+[20-06-2024 12:52:44] | Função: CRIAR_NOVA_CONTA | Args: [([PessoaFisica]: [CPF: 13634944650], [[PessoaFisica]: [CPF: 13634944650]])] & [{}] | Retorno: None
