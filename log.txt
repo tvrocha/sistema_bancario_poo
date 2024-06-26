@@ -38,3 +38,79 @@
 [20-06-2024 12:31:39] | Função: EXIBIR_EXTRATO | Args: [([ContaCorrente]: [Ag: 0001, Conta: 1, Cliente: Túlio],)] & [{}] | Retorno: None
 [20-06-2024 12:31:42] | Função: EXIBIR_EXTRATO | Args: [([ContaCorrente]: [Ag: 0001, Conta: 2, Cliente: Túlio],)] & [{}] | Retorno: None
 [20-06-2024 12:51:27] | Função: REALIZAR_DEPOSITO | Args: [([ContaCorrente]: [Ag: 0001, Conta: 2, Cliente: Túlio],)] & [{}] | Retorno: None
+[24-06-2024 16:36:32] | Função: REALIZAR_DEPOSITO | Args: [([ContaCorrente]: [Ag: 0001, Conta: 1, Cliente: Tulio Rocha],)] & [{}] | Retorno: None
+[24-06-2024 16:36:41] | Função: REALIZAR_SAQUE | Args: [([ContaCorrente]: [Ag: 0001, Conta: 1, Cliente: Tulio Rocha],)] & [{}] | Retorno: None
+[24-06-2024 16:36:44] | Função: EXIBIR_EXTRATO | Args: [([ContaCorrente]: [Ag: 0001, Conta: 1, Cliente: Tulio Rocha],)] & [{}] | Retorno: None
+[24-06-2024 18:32:15] | Função: EXIBIR_EXTRATO | Args: [([ContaCorrente]: [Ag: 0001, Conta: 1, Cliente: Tulio Rocha],)] & [{}] | Retorno: None
+[24-06-2024 18:32:34] | Função: REALIZAR_DEPOSITO | Args: [([ContaCorrente]: [Ag: 0001, Conta: 1, Cliente: Tulio Rocha],)] & [{}] | Retorno: None
+[24-06-2024 18:32:37] | Função: EXIBIR_EXTRATO | Args: [([ContaCorrente]: [Ag: 0001, Conta: 1, Cliente: Tulio Rocha],)] & [{}] | Retorno: None
+[24-06-2024 18:58:15] | Função: EXIBIR_EXTRATO | Args: [([ContaCorrente]: [Ag: 0001, Conta: 1, Cliente: Tulio Rocha],)] & [{}] | Retorno: None
+[24-06-2024 18:58:20] | Função: REALIZAR_DEPOSITO | Args: [([ContaCorrente]: [Ag: 0001, Conta: 1, Cliente: Tulio Rocha],)] & [{}] | Retorno: None
+[24-06-2024 18:58:23] | Função: EXIBIR_EXTRATO | Args: [([ContaCorrente]: [Ag: 0001, Conta: 1, Cliente: Tulio Rocha],)] & [{}] | Retorno: None
+[24-06-2024 18:58:33] | Função: REALIZAR_SAQUE | Args: [([ContaCorrente]: [Ag: 0001, Conta: 1, Cliente: Tulio Rocha],)] & [{}] | Retorno: None
+[24-06-2024 18:58:43] | Função: REALIZAR_DEPOSITO | Args: [([ContaCorrente]: [Ag: 0001, Conta: 1, Cliente: Tulio Rocha],)] & [{}] | Retorno: None
+[24-06-2024 18:58:47] | Função: EXIBIR_EXTRATO | Args: [([ContaCorrente]: [Ag: 0001, Conta: 1, Cliente: Tulio Rocha],)] & [{}] | Retorno: None
+[24-06-2024 19:17:15] | Função: REALIZAR_DEPOSITO | Args: [([ContaCorrente]: [Ag: 0001, Conta: 1, Cliente: Tulio Rocha],)] & [{}] | Retorno: None
+[24-06-2024 19:17:19] | Função: EXIBIR_EXTRATO | Args: [([ContaCorrente]: [Ag: 0001, Conta: 1, Cliente: Tulio Rocha],)] & [{}] | Retorno: None
+[24-06-2024 19:37:45] | Função: REALIZAR_DEPOSITO | Args: [([ContaCorrente]: [Ag: 0001, Conta: 1, Cliente: Tulio Rocha],)] & [{}] | Retorno: None
+[24-06-2024 19:53:02] | Função: REALIZAR_DEPOSITO | Args: [([ContaCorrente]: [Ag: 0001, Conta: 1, Cliente: Tulio Rocha],)] & [{}] | Retorno: None
+[24-06-2024 19:56:04] | Função: REALIZAR_DEPOSITO | Args: [([ContaCorrente]: [Ag: 0001, Conta: 1, Cliente: Tulio Rocha],)] & [{}] | Retorno: None
+[24-06-2024 20:07:59] | Função: REALIZAR_DEPOSITO | Args: [([ContaCorrente]: [Ag: 0001, Conta: 1, Cliente: Tulio Rocha],)] & [{}] | Retorno: None
+[24-06-2024 21:21:03] | Função: REALIZAR_DEPOSITO | Args: [([ContaCorrente]: [Ag: 0001, Conta: 1, Cliente: Tulio Rocha],)] & [{}] | Retorno: None
+[24-06-2024 21:21:08] | Função: EXIBIR_EXTRATO | Args: [([ContaCorrente]: [Ag: 0001, Conta: 1, Cliente: Tulio Rocha],)] & [{}] | Retorno: None
+[24-06-2024 21:22:10] | Função: REALIZAR_DEPOSITO | Args: [([ContaCorrente]: [Ag: 0001, Conta: 1, Cliente: Tulio Rocha],)] & [{}] | Retorno: None
+[24-06-2024 21:24:26] | Função: REALIZAR_DEPOSITO | Args: [([ContaCorrente]: [Ag: 0001, Conta: 1, Cliente: Tulio Rocha],)] & [{}] | Retorno: None
+[24-06-2024 21:26:18] | Função: REALIZAR_DEPOSITO | Args: [([ContaCorrente]: [Ag: 0001, Conta: 1, Cliente: Tulio Rocha],)] & [{}] | Retorno: None
+[24-06-2024 21:32:31] | Função: REALIZAR_DEPOSITO | Args: [([ContaCorrente]: [Ag: 0001, Conta: 5, Cliente: Tulio Rocha],)] & [{}] | Retorno: None
+[25-06-2024 09:20:54] | Função: REALIZAR_DEPOSITO | Args: [([ContaCorrente]: [Ag: 0001, Conta: 4, Cliente: Guido Junior],)] & [{}] | Retorno: None
+[25-06-2024 09:28:21] | Função: REALIZAR_DEPOSITO | Args: [([ContaCorrente]: [Ag: 0001, Conta: 1, Cliente: Tulio Rocha],)] & [{}] | Retorno: None
+[25-06-2024 09:28:33] | Função: EXIBIR_EXTRATO | Args: [([ContaCorrente]: [Ag: 0001, Conta: 1, Cliente: Tulio Rocha],)] & [{}] | Retorno: None
+[25-06-2024 09:29:47] | Função: REALIZAR_DEPOSITO | Args: [([ContaCorrente]: [Ag: 0001, Conta: 5, Cliente: Tulio Rocha],)] & [{}] | Retorno: None
+[25-06-2024 09:30:39] | Função: REALIZAR_DEPOSITO | Args: [([ContaCorrente]: [Ag: 0001, Conta: 1, Cliente: Tulio Rocha],)] & [{}] | Retorno: None
+[25-06-2024 09:51:58] | Função: REALIZAR_DEPOSITO | Args: [([ContaCorrente]: [Ag: 0001, Conta: 1, Cliente: Tulio Rocha],)] & [{}] | Retorno: None
+[25-06-2024 09:52:04] | Função: EXIBIR_EXTRATO | Args: [([ContaCorrente]: [Ag: 0001, Conta: 1, Cliente: Tulio Rocha],)] & [{}] | Retorno: None
+[25-06-2024 09:52:16] | Função: REALIZAR_SAQUE | Args: [([ContaCorrente]: [Ag: 0001, Conta: 1, Cliente: Tulio Rocha],)] & [{}] | Retorno: None
+[25-06-2024 09:52:23] | Função: REALIZAR_DEPOSITO | Args: [([ContaCorrente]: [Ag: 0001, Conta: 5, Cliente: Tulio Rocha],)] & [{}] | Retorno: None
+[25-06-2024 09:53:40] | Função: REALIZAR_DEPOSITO | Args: [([ContaCorrente]: [Ag: 0001, Conta: 7, Cliente: Slim Shady],)] & [{}] | Retorno: None
+[25-06-2024 09:53:43] | Função: EXIBIR_EXTRATO | Args: [([ContaCorrente]: [Ag: 0001, Conta: 7, Cliente: Slim Shady],)] & [{}] | Retorno: None
+[25-06-2024 09:53:55] | Função: REALIZAR_SAQUE | Args: [([ContaCorrente]: [Ag: 0001, Conta: 7, Cliente: Slim Shady],)] & [{}] | Retorno: None
+[25-06-2024 12:38:36] | Função: REALIZAR_DEPOSITO | Args: [([ContaCorrente]: [Ag: 0001, Conta: 7, Cliente: Slim Shady],)] & [{}] | Retorno: None
+[25-06-2024 12:38:42] | Função: REALIZAR_SAQUE | Args: [([ContaCorrente]: [Ag: 0001, Conta: 7, Cliente: Slim Shady],)] & [{}] | Retorno: None
+[25-06-2024 12:38:53] | Função: EXIBIR_EXTRATO | Args: [([ContaCorrente]: [Ag: 0001, Conta: 7, Cliente: Slim Shady],)] & [{}] | Retorno: None
+[25-06-2024 12:45:08] | Função: EXIBIR_EXTRATO | Args: [([ContaCorrente]: [Ag: 0001, Conta: 7, Cliente: Slim Shady],)] & [{}] | Retorno: None
+[25-06-2024 12:46:18] | Função: EXIBIR_EXTRATO | Args: [([ContaCorrente]: [Ag: 0001, Conta: 7, Cliente: Slim Shady],)] & [{}] | Retorno: None
+[25-06-2024 12:46:25] | Função: REALIZAR_DEPOSITO | Args: [([ContaCorrente]: [Ag: 0001, Conta: 7, Cliente: Slim Shady],)] & [{}] | Retorno: None
+[25-06-2024 12:55:07] | Função: REALIZAR_DEPOSITO | Args: [([ContaCorrente]: [Ag: 0001, Conta: 1, Cliente: Tulio Rocha],)] & [{}] | Retorno: None
+[25-06-2024 12:55:18] | Função: EXIBIR_EXTRATO | Args: [([ContaCorrente]: [Ag: 0001, Conta: 1, Cliente: Tulio Rocha],)] & [{}] | Retorno: None
+[25-06-2024 12:56:16] | Função: REALIZAR_SAQUE | Args: [([ContaCorrente]: [Ag: 0001, Conta: 1, Cliente: Tulio Rocha],)] & [{}] | Retorno: None
+[25-06-2024 12:56:23] | Função: EXIBIR_EXTRATO | Args: [([ContaCorrente]: [Ag: 0001, Conta: 1, Cliente: Tulio Rocha],)] & [{}] | Retorno: None
+[25-06-2024 17:44:11] | Função: EXIBIR_EXTRATO | Args: [([ContaCorrente]: [Ag: 0001, Conta: 1, Cliente: Tulio Vinicius C Rocha],)] & [{}] | Retorno: None
+[25-06-2024 17:52:20] | Função: REALIZAR_DEPOSITO | Args: [([ContaCorrente]: [Ag: 0001, Conta: 4, Cliente: Tulio Vinicius C Rocha],)] & [{}] | Retorno: None
+[25-06-2024 17:52:41] | Função: REALIZAR_SAQUE | Args: [([ContaCorrente]: [Ag: 0001, Conta: 4, Cliente: Tulio Vinicius C Rocha],)] & [{}] | Retorno: None
+[25-06-2024 18:00:08] | Função: REALIZAR_DEPOSITO | Args: [([ContaCorrente]: [Ag: 0001, Conta: 1, Cliente: Tulio],)] & [{}] | Retorno: None
+[25-06-2024 18:00:21] | Função: REALIZAR_SAQUE | Args: [([ContaCorrente]: [Ag: 0001, Conta: 1, Cliente: Tulio],)] & [{}] | Retorno: None
+[26-06-2024 10:55:09] | Função: REALIZAR_DEPOSITO | Args: [([ContaCorrente]: [Ag: 0001, Conta: 1, Cliente: Tulio Vinicius C Rocha],)] & [{}] | Retorno: None
+[26-06-2024 10:55:13] | Função: EXIBIR_EXTRATO | Args: [([ContaCorrente]: [Ag: 0001, Conta: 1, Cliente: Tulio Vinicius C Rocha],)] & [{}] | Retorno: None
+[26-06-2024 11:06:02] | Função: EXIBIR_EXTRATO | Args: [([ContaCorrente]: [Ag: 0001, Conta: 1, Cliente: Tulio Vinicius C Rocha],)] & [{}] | Retorno: None
+[26-06-2024 11:06:07] | Função: REALIZAR_SAQUE | Args: [([ContaCorrente]: [Ag: 0001, Conta: 1, Cliente: Tulio Vinicius C Rocha],)] & [{}] | Retorno: None
+[26-06-2024 11:06:44] | Função: REALIZAR_SAQUE | Args: [([ContaCorrente]: [Ag: 0001, Conta: 1, Cliente: Tulio Vinicius C Rocha],)] & [{}] | Retorno: None
+[26-06-2024 11:06:46] | Função: EXIBIR_EXTRATO | Args: [([ContaCorrente]: [Ag: 0001, Conta: 1, Cliente: Tulio Vinicius C Rocha],)] & [{}] | Retorno: None
+[26-06-2024 11:19:15] | Função: REALIZAR_DEPOSITO | Args: [([ContaCorrente]: [Ag: 0001, Conta: 1, Cliente: Túlio Vinícius Carvalho Rocha],)] & [{}] | Retorno: None
+[26-06-2024 11:19:21] | Função: REALIZAR_SAQUE | Args: [([ContaCorrente]: [Ag: 0001, Conta: 1, Cliente: Túlio Vinícius Carvalho Rocha],)] & [{}] | Retorno: None
+[26-06-2024 11:19:28] | Função: REALIZAR_SAQUE | Args: [([ContaCorrente]: [Ag: 0001, Conta: 1, Cliente: Túlio Vinícius Carvalho Rocha],)] & [{}] | Retorno: None
+[26-06-2024 11:19:29] | Função: EXIBIR_EXTRATO | Args: [([ContaCorrente]: [Ag: 0001, Conta: 1, Cliente: Túlio Vinícius Carvalho Rocha],)] & [{}] | Retorno: None
+[26-06-2024 11:21:33] | Função: REALIZAR_DEPOSITO | Args: [([ContaCorrente]: [Ag: 0001, Conta: 2, Cliente: Hands Like Houses],)] & [{}] | Retorno: None
+[26-06-2024 11:21:40] | Função: REALIZAR_SAQUE | Args: [([ContaCorrente]: [Ag: 0001, Conta: 2, Cliente: Hands Like Houses],)] & [{}] | Retorno: None
+[26-06-2024 11:21:50] | Função: REALIZAR_DEPOSITO | Args: [([ContaCorrente]: [Ag: 0001, Conta: 3, Cliente: Hands Like Houses],)] & [{}] | Retorno: None
+[26-06-2024 11:30:59] | Função: REALIZAR_DEPOSITO | Args: [([ContaCorrente]: [Ag: 0001, Conta: 5, Cliente: Guido Marcilio da Rocha Jr.],)] & [{}] | Retorno: None
+[26-06-2024 11:31:14] | Função: REALIZAR_SAQUE | Args: [([ContaCorrente]: [Ag: 0001, Conta: 6, Cliente: Guido Marcilio da Rocha Jr.],)] & [{}] | Retorno: None
+[26-06-2024 11:31:21] | Função: REALIZAR_SAQUE | Args: [([ContaCorrente]: [Ag: 0001, Conta: 6, Cliente: Guido Marcilio da Rocha Jr.],)] & [{}] | Retorno: None
+[26-06-2024 11:31:31] | Função: REALIZAR_DEPOSITO | Args: [([ContaCorrente]: [Ag: 0001, Conta: 6, Cliente: Guido Marcilio da Rocha Jr.],)] & [{}] | Retorno: None
+[26-06-2024 11:31:44] | Função: EXIBIR_EXTRATO | Args: [([ContaCorrente]: [Ag: 0001, Conta: 6, Cliente: Guido Marcilio da Rocha Jr.],)] & [{}] | Retorno: None
+[26-06-2024 11:31:50] | Função: EXIBIR_EXTRATO | Args: [([ContaCorrente]: [Ag: 0001, Conta: 5, Cliente: Guido Marcilio da Rocha Jr.],)] & [{}] | Retorno: None
+[26-06-2024 11:41:24] | Função: REALIZAR_DEPOSITO | Args: [([ContaCorrente]: [Ag: 0001, Conta: 7, Cliente: Túlio Vinícius Carvalho Rocha],)] & [{}] | Retorno: None
+[26-06-2024 11:41:38] | Função: EXIBIR_EXTRATO | Args: [([ContaCorrente]: [Ag: 0001, Conta: 7, Cliente: Túlio Vinícius Carvalho Rocha],)] & [{}] | Retorno: None
+[26-06-2024 11:56:24] | Função: EXIBIR_EXTRATO | Args: [([ContaCorrente]: [Ag: 0001, Conta: 1, Cliente: Túlio Vinícius Carvalho Rocha],)] & [{}] | Retorno: None
+[26-06-2024 11:56:30] | Função: REALIZAR_SAQUE | Args: [([ContaCorrente]: [Ag: 0001, Conta: 1, Cliente: Túlio Vinícius Carvalho Rocha],)] & [{}] | Retorno: None
+[26-06-2024 11:56:32] | Função: EXIBIR_EXTRATO | Args: [([ContaCorrente]: [Ag: 0001, Conta: 1, Cliente: Túlio Vinícius Carvalho Rocha],)] & [{}] | Retorno: None
+[26-06-2024 11:56:40] | Função: REALIZAR_DEPOSITO | Args: [([ContaCorrente]: [Ag: 0001, Conta: 4, Cliente: Túlio Vinícius Carvalho Rocha],)] & [{}] | Retorno: None

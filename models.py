@@ -60,7 +60,7 @@ class Conta:
         self._numero = numero  # int - numero da conta
         self._agencia = "0001"  # str - '0001'
         self._cliente = cliente
-        self._historico = Historico()
+        self._historico = Historico(self)
 
     @classmethod
     def nova_conta(cls, cliente, numero):
@@ -111,10 +111,12 @@ class Conta:
             return False
 
     def adicionar_transacao(self, transacao):
-        if self.historico.transacoes_do_dia() > 10:
+        if self.historico.transacoes_do_dia() >= 10:
             print("\nVocê excedeu o número de transações permitidas para hoje!")
             return
-        transacao.executar(self)
+        sucesso_transacao = transacao.executar(self)
+        if sucesso_transacao:
+            self.historico.adicionar_transacao(transacao, self.numero)
 
 
 class ContaCorrente(Conta):

@@ -1,9 +1,10 @@
-from pathlib import Path
-from models import Cliente, PessoaFisica, ContaCorrente, ContaIterador
-from transacoes import Saque, Deposito, Historico
+from models import PessoaFisica, ContaCorrente, ContaIterador
+from transacoes import Saque, Deposito
 from utils import log_transacao, organizar_menu, menu_cadastro, menu_opcoes
 from datetime import datetime
 
+from db import criar_conexao, criar_cursor, cadastrar_cliente_db, cadastrar_conta_db, filtrar_cpf, listar_clientes_db
+from db import atualizar_saldo_db
 
 @log_transacao
 def cadastrar_clientes(clientes):
@@ -14,7 +15,7 @@ def cadastrar_clientes(clientes):
             print("\nCPF inválido. Tente novamente.")
         else:
             break
-    novo_cliente = filtrar_cpf(cpf, clientes)
+    novo_cliente = filtrar_cpf(cpf)
     if novo_cliente:
         print("\nJá existe conta com este CPF.")
         return
@@ -32,6 +33,7 @@ def cadastrar_clientes(clientes):
     )
     clientes.append(novo_cliente)
     criar_nova_conta(novo_cliente, clientes)
+    cadastrar_cliente_db(novo_cliente)
     print(f"\nCliente [{nome}] cadastrado com sucesso!")
 
 
@@ -41,21 +43,17 @@ def criar_nova_conta(novo_cliente, clientes):
     for cliente in clientes:
         for conta in cliente.contas:
             max_num_conta = max(max_num_conta, conta.numero)
-    num_conta = max_num_conta + 1
+    num_conta = max_num_conta + 1   
     nova_conta = ContaCorrente.nova_conta(cliente=novo_cliente, numero=num_conta)
     novo_cliente.adicionar_conta(nova_conta)
+    cadastrar_conta_db(novo_cliente)
     print(f"\nConta {num_conta} criado com sucesso.")
 
 
-def filtrar_cpf(cpf, clientes):
-    filtro_cliente = [cliente for cliente in clientes if cliente.cpf == cpf]
-    return filtro_cliente[0] if filtro_cliente else None
-
-
-def login(clientes):
+def login():
     organizar_menu("Login")
     cpf_login = input("Entre com o CPF [apenas números]: ")
-    se_cadastrado = filtrar_cpf(cpf_login, clientes)
+    se_cadastrado = filtrar_cpf(cpf_login)
     if se_cadastrado:
         print("\nLogin realizado!")
         return cpf_login
@@ -67,10 +65,14 @@ def login(clientes):
 @log_transacao
 def realizar_deposito(conta):
     organizar_menu("Depósito")
+    print(f"Saldo atual: R${conta.saldo:,.2f}")
     valor = float(input("Informe o valor do depósito: R$"))
     transacao = Deposito(valor)
     conta.adicionar_transacao(transacao)
-
+    atualizar_saldo_db(conta)
+    # registrar_transacoes_db(transacao, conta.numero)
+    
+    
 
 @log_transacao
 def realizar_saque(conta):
@@ -78,14 +80,14 @@ def realizar_saque(conta):
     valor = float(input("Informe o valor do saque: R$"))
     transacao = Saque(valor)
     conta.adicionar_transacao(transacao)
+    atualizar_saldo_db(conta)
+    # registrar_transacoes_db(transacao, conta.numero)
 
 
 @log_transacao
 def exibir_extrato(contas):
     organizar_menu("Extrato")
-    for conta in contas.historico.exibir_extrato(
-        contas
-    ):  # tipo_transacao='Saque' caso queira filtrar
+    for conta in contas.historico.exibir_extrato(contas):  # tipo_transacao='Saque' caso queira filtrar
         print(conta)
 
 
@@ -93,11 +95,11 @@ def exibir_clientes(clientes):
     if not clientes:
         print("\nNenhum cliente encontrado.")
     else:
-        for cliente in clientes:
+        for cliente_info in clientes:
             print()
             print(
-                f"Cliente: {cliente.nome} | CPF: {cliente.cpf}"
-                f"\nNascimento: {cliente.data_nascimento} | Contas: {[conta.numero for conta in cliente.contas]}"
+                f"Cliente: {cliente_info.nome} | CPF: {cliente_info.cpf}"
+                f"\nNascimento: {cliente_info.data_nascimento} | Contas: {[conta.numero for conta in cliente_info.contas]}"
             )
 
 
@@ -106,12 +108,28 @@ def exibir_contas(cliente):
         print(conta)
 
 
-clientes = []
+def resetar_banco_dados():
+    with criar_conexao() as conexao:
+        with criar_cursor(conexao) as cursor:
+            cursor.executescript(
+                "DELETE FROM cliente;"
+                "DELETE FROM conta;"
+                "DELETE FROM transacao;"
+                "DELETE FROM sqlite_sequence WHERE name = 'cliente';"
+                "DELETE FROM sqlite_sequence WHERE name = 'conta';"
+                "DELETE FROM sqlite_sequence WHERE name = 'transacao';"
+            )
+    global clientes
+    clientes = []
+
+
 
 while True:
 
     sair = False
     login_realizado = None
+
+    clientes = listar_clientes_db()
 
     while not login_realizado:
 
@@ -121,7 +139,7 @@ while True:
             cadastrar_clientes(clientes)
 
         elif opcao_cadastro == "2":
-            login_realizado = login(clientes)
+            login_realizado = login()
 
         elif opcao_cadastro == "3":
             exibir_clientes(clientes)
@@ -131,6 +149,10 @@ while True:
             organizar_menu("Fim do Programa")
             sair = True
             break
+
+        elif opcao_cadastro == "10":
+            resetar_banco_dados()
+            print("\nBanco de Dados resetado com sucesso!")
 
         else:
             organizar_menu("Opção Inválida")
@@ -150,7 +172,7 @@ while True:
         elif opcao_menu == "3":
             exibir_extrato(conta)
         elif opcao_menu == "4":
-            criar_nova_conta(filtrar_cpf(login_realizado, clientes), clientes)
+            criar_nova_conta(filtrar_cpf(login_realizado), clientes)
         elif opcao_menu == "5":
             exibir_contas(conta)
         else:

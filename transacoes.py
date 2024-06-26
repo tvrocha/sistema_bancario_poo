@@ -1,21 +1,23 @@
 from abc import ABC, abstractclassmethod, abstractproperty
 from datetime import datetime
 
-
 class Historico:
-    def __init__(self, transacoes=None) -> None:
+    def __init__(self, conta, transacoes=None) -> None:
         if transacoes is None:
             transacoes = []
-        self._transacoes = transacoes
+        self._transacoes = self._listar_transacoes_db(conta)
 
-    def adicionar_transacao(self, transacao):
-        self._transacoes.append(
-            {
-                "Tipo": transacao.__class__.__name__,
-                "Valor": transacao.valor,
-                "Data": datetime.now().strftime(r"%d-%m-%Y %H:%M:%S"),
-            }
-        )
+    def adicionar_transacao(self, transacao, conta_numero):
+        # self._transacoes.append({"Tipo": transacao.__class__.__name__, "Valor": transacao.valor, "Data": datetime.now().strftime(r"%d-%m-%Y %H:%M:%S")})
+        self._registrar_transacoes_db(transacao, conta_numero)      
+        
+    def _registrar_transacoes_db(self, transacao, conta_numero):
+        from db import registrar_transacoes_db
+        registrar_transacoes_db(transacao, conta_numero)    
+    
+    def _listar_transacoes_db(self, conta):
+        from db import listar_transacoes_db
+        return listar_transacoes_db(conta)
 
     def exibir_extrato(self, conta, tipo_transacao=None):
         if not self._transacoes:
@@ -32,6 +34,7 @@ class Historico:
         return self._transacoes
 
     def transacoes_do_dia(self):
+
         transacoes_hoje = len(
             [
                 transacao
@@ -60,12 +63,16 @@ class Saque(Transacao):
 
     def executar(self, conta):
         sucesso_transacao = conta.sacar(self.valor)
-        if sucesso_transacao:
-            conta.historico.adicionar_transacao(self)
+        return sucesso_transacao
+        # if sucesso_transacao:
+        #     conta.historico.adicionar_transacao(self, conta.numero)
 
     @property
     def valor(self):
         return self._valor
+
+    def __repr__(self) -> str:
+        return f"[{self.__class__.__name__}]: Valor R${self.valor:,.2f}"
 
 
 class Deposito(Transacao):
@@ -74,10 +81,15 @@ class Deposito(Transacao):
 
     def executar(self, conta):
         sucesso_transacao = conta.depositar(self.valor)
+
         if sucesso_transacao:
-            conta.historico.adicionar_transacao(self)
+            conta.historico.adicionar_transacao(self, conta.numero)
 
     @property
     def valor(self):
         return self._valor
+    
+    def __repr__(self) -> str:
+        return f"[{self.__class__.__name__}]: Valor R${self.valor:,.2f}"
+
 

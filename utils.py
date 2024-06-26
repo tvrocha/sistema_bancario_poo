@@ -1,6 +1,8 @@
 from datetime import datetime
 from pathlib import Path
 
+from db import filtrar_cpf
+
 PASTA_RAIZ = Path(__file__).parent
 
 
@@ -70,7 +72,7 @@ def selecionar_contas(contas):
 
 
 def menu_opcoes(cpf_login, lista_clientes):
-    cliente = [cliente for cliente in lista_clientes if cliente.cpf == cpf_login][0]
+    cliente = filtrar_cpf(cpf_login)
     contas = cliente.contas
     conta = selecionar_contas(contas)
     if conta == 0:
@@ -88,5 +90,6 @@ def menu_opcoes(cpf_login, lista_clientes):
     )
     print(f"Titular: {cliente.nome}")
     print(f"Conta: {conta.numero}")
+    print(f"Saldo: R${conta.saldo:,.2f}")
     return input("Entre com a opção: "), conta
 
